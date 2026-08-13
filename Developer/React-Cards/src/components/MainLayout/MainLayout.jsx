@@ -1,23 +1,25 @@
+
+import { Layout, Typography } from "antd";
 import { Outlet } from "react-router-dom";
-import cls from "./MainLayout.module.css";
+import { Header } from "../Header/Header";
+
+const { Content, Footer } = Layout;
 
 const MainLayout = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className={cls.mainLayout}>
-      <header>header</header>
+    <Layout style={{ minHeight: "100vh" }}>
+      <Header />
 
-      <div className={cls.mainWrapper}>
-        <main className={cls.main}>
-          <Outlet />
-        </main>
-      </div>
+      <Content style={{ padding: "24px" }}>
+        <Outlet />
+      </Content>
 
-      <footer className={cls.footer}>
+      <Footer style={{ textAlign: "center" }}>
         React Question Cards | {currentYear}
-      </footer>
-    </div>
+      </Footer>
+    </Layout>
   );
 };
 
